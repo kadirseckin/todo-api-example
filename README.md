@@ -14,3 +14,5 @@ Route::get('/', [TaskController::class, 'getTasks']);
 ### Db schema
 ![Veritabanı Şeması](https://github.com/kadirseckin/todo-api-example/blob/main/resources/db_schema.png)
 
+- Console/Commands/GetTasks.php -> Path of the command that gets the data from the API
+- Http/Controllers/TaskController.php -> Path of the controller fuction that assigns the tasks
