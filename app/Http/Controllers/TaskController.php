@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
     private const WORK_HOUR_PER_WEEK = 45;
+    private const SPRINT_WEEK = 2;
 
     public function getTasks()
     {
@@ -65,15 +66,15 @@ class TaskController extends Controller
         $assignedTasks = [];
         $taskFlags = [];
         foreach ($assignmentMatrix as $developerName => $assignments) {
-            $developerHourWork = 0;
+            $developerWorkHour = 0;
             foreach ($assignments as $task) {
                 if (
                     empty($taskFlags[$task['taskId']]) &&
-                    $developerHourWork + $task['finishTime'] <= $avgLabor &&
-                    $developerHourWork + $task['finishTime'] <= self::WORK_HOUR_PER_WEEK
+                    $developerWorkHour + $task['finishTime'] <= $avgLabor &&
+                    $developerWorkHour + $task['finishTime'] <= (self::WORK_HOUR_PER_WEEK * self::SPRINT_WEEK)
                 ) {
 
-                    $developerHourWork =  $developerHourWork + $task['finishTime'];
+                    $developerWorkHour =  $developerWorkHour + $task['finishTime'];
                     $assignedTasks[$developerName][] = $task['taskId'];
                     $taskFlags[$task['taskId']] = true;
                 }
