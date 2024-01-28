@@ -32,6 +32,7 @@ class TaskController extends Controller
         return view('tasks', ['assignedTasks' => $assignedTasks]);
     }
 
+    // Create a matrix showing which developer will complete which job and how long it will take to complete.
     private function createAssignmentMatrix($developers, $tasks): array
     {
         $assignmentMatrix = [];
@@ -58,6 +59,7 @@ class TaskController extends Controller
         return $assignmentMatrix;
     }
 
+    // Function that allocates jobs according to assignment matrix
     private function scheduleTasks($assignmentMatrix, $avgLabor): array
     {
         $assignedTasks = [];

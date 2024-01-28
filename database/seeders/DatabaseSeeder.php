@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
+    public function run(): void   // Create dummy data
     {
         Config::insert([
             'key' => 'active_sprint',

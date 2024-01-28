@@ -23,7 +23,7 @@ class GetTasks extends Command
      *
      * @var string
      */
-    protected $description = 'Get tasks';
+    protected $description = 'Fetch tasks from api and insert them to the tasks table';
 
     /**
      * Execute the console command.
